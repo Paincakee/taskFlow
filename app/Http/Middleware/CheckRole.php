@@ -17,13 +17,16 @@ class CheckRole
     {
         $user = auth()->user();
 
-        if ($user && $user->roles->contains(function ($r) use ($role) {
-                return $r->name === $role; // Adjust this based on your role attribute
-            })) {
-            return $next($request);
+        if ($user) {
+            $hasRole = $user->roles->contains(function ($r) use ($role) {
+                return $r->role === $role;
+            });
+
+            if ($hasRole) {
+                return $next($request);
+            }
         }
-        dump($user->roles);
+
         return redirect('/dashboard')->with('error', 'You don\'t have permission to access this page.');
-//        return $next($request);
     }
 }
