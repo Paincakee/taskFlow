@@ -28,6 +28,6 @@ class CheckRole
             }
         }
 
-        return redirect('/dashboard')->with('error', 'You don\'t have permission to access this page.');
+        return redirect('/dashboardController')->with('error', 'You don\'t have permission to access this page.');
     }
 }

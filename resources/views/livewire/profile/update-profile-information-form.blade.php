@@ -54,7 +54,7 @@ new class extends Component {
         $user = Auth::user();
 
         if ($user->hasVerifiedEmail()) {
-            $this->redirectIntended(default: route('dashboard', absolute: false));
+            $this->redirectIntended(default: route('dashboardController', absolute: false));
 
             return;
         }
@@ -121,6 +121,7 @@ new class extends Component {
     <h1>
         <ul>
             @foreach ($roles as $role)
+                @dump($role)
                 <li>{{$role->role}}</li>
             @endforeach
         </ul>
