@@ -15,6 +15,10 @@ Route::get('task', [TaskController::class, 'index'])
     ->middleware(['auth', 'verified', 'checkRole:ROLE_ADMIN'])
     ->name('task');
 
+Route::get('create-task', [TaskController::class, 'create'])
+    ->middleware(['auth', 'verified', 'checkRole:ROLE_ADMIN'])
+    ->name('create-task');
+
 Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');

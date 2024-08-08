@@ -10,7 +10,12 @@ class TaskController extends Controller
     public function index(): View
     {
         return view('task', [
+        ]);
+    }
 
+    public function create(): View
+    {
+        return view('task', [
         ]);
     }
 }
