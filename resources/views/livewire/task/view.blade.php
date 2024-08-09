@@ -6,44 +6,7 @@ use Livewire\Attributes\On;
 use Livewire\Volt\Component;
 
 new class extends Component {
-    public $tasks;
-    public $editing;
 
-    public function mount(): void
-    {
-        $this->tasks = collect(); // Initialize as an empty collection
-        $this->getTasks(); // Fetch tasks
-    }
-
-    public function getTasks(): void
-    {
-        $this->tasks = Task::latest()->get();
-    }
-
-    public function edit(Task $task): void
-    {
-        $this->editing = $task;
-
-        $this->getTasks();
-    }
-
-    #[On('task-edit-canceled')]
-    #[On('task-updated')]
-    public function disableEditing(): void
-    {
-        $this->editing = null;
-
-        $this->getTasks();
-    }
-
-    public function delete(Task $task): void
-    {
-        $this->authorize('delete', $task);
-
-        $task->delete();
-
-        $this->getTasks();
-    }
 }; ?>
 
 <div>
